@@ -1,0 +1,32 @@
+<div>
+    <h2>{{ doctor.name }}'s Schedule</h2>
+    <table>
+      <tr *ngFor="let day of doctor.schedule; let i = index">
+        <td>{{ getDayOfWeek(i) }}</td>
+        <td *ngFor="let slot of day; let j = index">
+          {{ slot.time }}
+          <span *ngIf="isSlotAvailable(i, j)">Available</span>
+          <span *ngIf="!isSlotAvailable(i, j)">Booked</span>
+          <button *ngIf="isSlotAvailable(i, j)" (click)="bookAppointment(i,j)">Book</button>
+  
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div>
+    <h2>Book an Appointment</h2>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    <form #appointmentForm="ngForm">
+      <label for="patientName">Patient Name</label>
+      <input type="text" id="patientName" name="patientName" [(ngModel)]="appointment.patientName">
+  
+      <label for="dateTime">Date and Time</label>
+      <input type="datetime-local" id="dateTime" name="dateTime" [(ngModel)]="appointment.dateTime">
+  
+      <label for="healthIssue">Description of Health Issue</label>
+      <textarea id="healthIssue" name="healthIssue" [(ngModel)]="appointment.healthIssue"></textarea>
+  
+      <button type="submit">Book Appointment</button>
+    </form>
+  </div>

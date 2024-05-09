@@ -1,0 +1,7 @@
+# Follow the below steps to run the application
+
+# 1. Install NodeJS (v19.4.0) download nodejs software from browser
+# 2. Install Angular cli in command ctrl(v-17.3.6)- npm install -g @angular/cli
+# 3. unzip the folder and run npm install in command 
+# 4. run the command- ng serve
+# 4. open browser and run the url http://localhost:4200/
